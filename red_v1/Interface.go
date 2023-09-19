@@ -3,7 +3,7 @@ package red
 
 import "fmt"
 
-func (p *personnage) afficherdemarrage() {
+func (p *Personnage) Afficherdemarrage() {
 	var choixdemarrage int
 	for {
 		fmt.Println("1. Démarrer")
@@ -13,7 +13,7 @@ func (p *personnage) afficherdemarrage() {
 
 		switch choixdemarrage {
 		case 1:
-			p.choixpersonnage()
+			p.Choixpersonnage()
 		case 2:
 			fmt.Println("En cours...")
 		case 3:
@@ -25,7 +25,7 @@ func (p *personnage) afficherdemarrage() {
 	}
 }
 
-func (p *personnage) choixpersonnage() {
+func (p *Personnage) Choixpersonnage() {
 	var choixperso int
 	fmt.Println("Select your character : ")
 	fmt.Println("1. Elfe")
@@ -33,7 +33,7 @@ func (p *personnage) choixpersonnage() {
 
 	switch choixperso {
 	case 1:
-		var p1 personnage
+		var p1 Personnage
 		p1.init("Marin", "elfe", 1, 100, 40, []string{"Potion", "Potion", "Potion"})
 		p1.affichermenu()
 
@@ -41,7 +41,7 @@ func (p *personnage) choixpersonnage() {
 
 }
 
-func (p *personnage) affichermenu() {
+func (p *Personnage) Affichermenu() {
 
 	var choixmenu int
 	for {
@@ -55,14 +55,14 @@ func (p *personnage) affichermenu() {
 
 		switch choixmenu {
 		case 1:
-			p.displayinfo()
+			p.Displayinfo()
 		case 2:
-			p.accessinventory()
+			p.Accessinventory()
 		case 3:
-			p.accessmarchand()
+			p.Accessmarchand()
 		case 4:
 			fmt.Println("Au revoir !")
-			p.afficherdemarrage()
+			p.Afficherdemarrage()
 		default:
 			fmt.Println("Choix invalide, veuillez réessayer")
 

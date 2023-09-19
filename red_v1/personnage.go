@@ -2,8 +2,10 @@ package red
 
 import "fmt"
 
+var p Personnage
+
 // Création structure Personnage
-type personnage struct {
+type Personnage struct {
 	nom        string
 	classe     string
 	niveau     int
@@ -14,7 +16,7 @@ type personnage struct {
 }
 
 // Fonction pour initialiser personnage
-func (p *personnage) init(nom string, classe string, niveau int, PV_max int, PV_actuel int, inventaire []string, skills string) {
+func (p *Personnage) Init(nom string, classe string, niveau int, PV_max int, PV_actuel int, inventaire []string, skills string) {
 	p.nom = nom
 	p.classe = classe
 	p.niveau = niveau
@@ -25,7 +27,7 @@ func (p *personnage) init(nom string, classe string, niveau int, PV_max int, PV_
 }
 
 // Fonction pour afficher info persos
-func (p *personnage) displayinfo() {
+func (p *Personnage) Displayinfo() {
 	var quittermenu int
 	fmt.Println("Information du personnage : ")
 	fmt.Println("Nom :", p.nom)
@@ -41,7 +43,7 @@ func (p *personnage) displayinfo() {
 
 	switch quittermenu {
 	case 0:
-		p.affichermenu()
+		p.Affichermenu()
 	default:
 		fmt.Println("Choix invalide, veuillez réessayer")
 	}
@@ -49,7 +51,7 @@ func (p *personnage) displayinfo() {
 
 // Fonction Accès à l'inventaire
 
-func (p *personnage) accessinventory() {
+func (p *Personnage) Accessinventory() {
 	var quitterinventaire int
 	var choixinventaire int
 	if len(p.inventaire) == 0 {
@@ -72,7 +74,7 @@ func (p *personnage) accessinventory() {
 		fmt.Scan(&quitterinventaire)
 		switch quitterinventaire {
 		case 1:
-			p.affichermenu()
+			p.Affichermenu()
 		default:
 			fmt.Println("Choix invalide, veuillez réessayer")
 		}
@@ -80,8 +82,8 @@ func (p *personnage) accessinventory() {
 
 }
 
-func (p personnage) SpellBook(s string) {
-	sb := personnage{nom: "book", classe: "book", inventaire: map[string]int{"boule de feu": 1}}
+func (p *Personnage) SpellBook(s string) {
+	sb := Personnage{nom: "book", classe: "book", inventaire: map[string]int{"boule de feu": 1}}
 	sb.inventaire[s] = 1
 	fmt.Println("--------------------------")
 	fmt.Println("Quel skill veux-tu apprendre?")

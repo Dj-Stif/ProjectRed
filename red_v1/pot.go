@@ -6,7 +6,7 @@ import (
 )
 
 // Fonction TakePot
-func (p *personnage) takepot() {
+func (p *Personnage) Takepot() {
 
 	diffPV := p.PV_actuel + 50 - p.PV_max
 	if p.PV_actuel == p.PV_max {
@@ -30,16 +30,16 @@ func (p *personnage) takepot() {
 		case 1:
 			p.PV_actuel = p.PV_max
 			fmt.Println("Vous avez utilisé une potion, vous avez :", p.PV_actuel, "PV")
-			p.removeinventory("Potion")
+			p.Removeinventory("Potion")
 
 		case 2:
-			p.accessinventory()
+			p.Accessinventory()
 		}
 	}
 }
 
 // Fonction potion de poison
-func (p *personnage) poisonpot() {
+func (p *Personnage) Poisonpot() {
 	var durée int = 3
 	var degatspoison int = 10
 

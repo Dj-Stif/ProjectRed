@@ -3,21 +3,21 @@ package red
 import "fmt"
 
 // Fonction add inventaire
-func (p *personnage) AddInventory() {
+func (p *Personnage) AddInventory() {
 	p.inventaire = append(p.inventaire)
 	fmt.Println("Ajout à l'inventaire")
 
 }
 
 // Fonction remove inventaire
-func (p *personnage) RemoveInventory(itemname string) {
+func (p *Personnage) RemoveInventory(itemname string) {
 	for i, itemname := range p.inventaire {
 		p.inventaire = append(p.inventaire[:itemname[i]], p.inventaire[itemname[i]:]...)
 	}
 }
 
 // Fonction Dead
-func (p *personnage) Dead() {
+func (p *Personnage) Dead() {
 	if p.PV_actuel == 0 {
 		fmt.Println("Vous êtes mort !")
 		p.PV_actuel = p.PV_max / 2
@@ -26,15 +26,21 @@ func (p *personnage) Dead() {
 }
 
 // Fonction est ce que c'est dans l'inventaire
-func (p personnage) IsInSkill() {
-	for skl, pos := range p.skills {
-		fmt.Println("Tu connais déjà ce skill")
+func (p *Personnage) IsInSkill(skl string) bool {
+	for _, skills := range p.skills {
+		if skl == skills {
+			return true
+		}
 	}
+	return false
 }
 
 //Fonction est ce que c'est dans l'inventaire
-func (p personnage) IsInInventory() {
-	for sb, val := range p.inventaire {
-		fmt.Println("Tu as déjà ce SpellBook")
+func (p *Personnage) IsInInventory(val string) bool {
+	for char := range p.inventaire {
+		if val == char {
+			return true
+		}
 	}
+	return false
 }
