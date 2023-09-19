@@ -9,17 +9,19 @@ type personnage struct {
 	niveau     int
 	PV_max     int
 	PV_actuel  int
-	inventaire []string
+	inventaire map[string]int
+	skills     string
 }
 
 // Fonction pour initialiser personnage
-func (p *personnage) init(nom string, classe string, niveau int, PV_max int, PV_actuel int, inventaire []string) {
+func (p *personnage) init(nom string, classe string, niveau int, PV_max int, PV_actuel int, inventaire []string, skills string) {
 	p.nom = nom
 	p.classe = classe
 	p.niveau = niveau
 	p.PV_max = PV_max
 	p.PV_actuel = PV_actuel
 	p.inventaire = inventaire
+	p.skills = skills
 }
 
 // Fonction pour afficher info persos
@@ -32,6 +34,7 @@ func (p *personnage) displayinfo() {
 	fmt.Println("PV Max :", p.PV_max)
 	fmt.Println("PV_actuel :", p.PV_actuel)
 	fmt.Println("Inventaire : ", p.inventaire)
+	fmt.Println("Liste de sorts :", p.skills)
 	fmt.Println("--------------------------------")
 	fmt.Println("0. Quitter")
 	fmt.Scan(&quittermenu)
@@ -75,4 +78,27 @@ func (p *personnage) accessinventory() {
 		}
 	}
 
+}
+
+func (p personnage) SpellBook(s string) {
+	sb := personnage{nom: "book", classe: "book", inventaire: map[string]int{"boule de feu": 1}}
+	sb.inventaire[s] = 1
+	fmt.Println("--------------------------")
+	fmt.Println("Quel skill veux-tu apprendre?")
+	for cle, val := range sb.inventaire {
+		fmt.Printf("S %d %s", val, cle)
+	}
+	fmt.Println("\\n--------------------------")
+	var answer string
+	fmt.Scan(&answer)
+	if !p.IsInSkill(answer) {
+		if sb.IsInInventory(answer) {
+			p.skills = append(p.skills, answer)
+			fmt.Println("Vous avez appris un nouveau skill!")
+		} else {
+			fmt.Println("Je ne connais pas ce skill")
+		}
+	} else {
+		fmt.Println("Vous possédez déja ce skill")
+	}
 }
