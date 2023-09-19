@@ -20,7 +20,7 @@ func (p *personnage) init(nom string, classe string, niveau int, PV_max int, PV_
 	p.niveau = niveau
 	p.PV_max = PV_max
 	p.PV_actuel = PV_actuel
-	p.inventaire = inventaire
+	p.inventaire = map[string]int{"potion de vie": 1}
 	p.skills = skills
 }
 

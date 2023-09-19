@@ -24,3 +24,17 @@ func (p *personnage) Dead() {
 		fmt.Println("Vous avez été ressuscité avec 50% hp")
 	}
 }
+
+// Fonction est ce que c'est dans l'inventaire
+func (p personnage) IsInSkill() {
+	for skl, pos := range p.skills {
+		fmt.Println("Tu connais déjà ce skill")
+	}
+}
+
+//Fonction est ce que c'est dans l'inventaire
+func (p personnage) IsInInventory() {
+	for sb, val := range p.inventaire {
+		fmt.Println("Tu as déjà ce SpellBook")
+	}
+}
