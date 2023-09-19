@@ -16,7 +16,7 @@ func (p *personnage) takepot() {
 	if diffPV < 0 {
 		p.PV_actuel += 50
 		fmt.Println("Vous avez utilisé une potion, vous avez :", p.PV_actuel, "PV")
-		p.removeinventory("Potion")
+		p.removeInventory("Potion")
 
 	}
 	var choixpotion int
@@ -30,7 +30,7 @@ func (p *personnage) takepot() {
 		case 1:
 			p.PV_actuel = p.PV_max
 			fmt.Println("Vous avez utilisé une potion, vous avez :", p.PV_actuel, "PV")
-			p.removeinventory("Potion")
+			p.removeInventory("Potion")
 
 		case 2:
 			p.accessinventory()

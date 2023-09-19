@@ -34,7 +34,7 @@ func (p *personnage) choixpersonnage() {
 	switch choixperso {
 	case 1:
 		var p1 personnage
-		p1.init("Marin", "elfe", 1, 100, 40, []string{"Potion", "Potion", "Potion"})
+		p1.init("Marin", "elfe", 1, 100, 40, []string{"Potion", "Potion", "Potion"}, 100)
 		p1.affichermenu()
 
 	}

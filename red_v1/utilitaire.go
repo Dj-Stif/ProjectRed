@@ -3,16 +3,22 @@ package main
 import "fmt"
 
 // Fonction add inventaire
-func (p *personnage) addinventory() {
-	p.inventaire = append(p.inventaire)
-	fmt.Println("Ajout à l'inventaire")
-
+func (p *personnage) addinventory(ItemToAdd string) {
+	if len(p.inventaire) >= 10 {
+		fmt.Println("Vous ne pouvez pas avoir plus de 10 items dans votre inventaire !")
+	} else {
+		p.inventaire = append(p.inventaire, ItemToAdd)
+		fmt.Printf("Ajout de %s à l'inventaire \n", ItemToAdd)
+	}
 }
 
 // Fonction remove inventaire
-func (p *personnage) removeinventory(itemname string) {
-	for i, itemname := range p.inventaire {
-		p.inventaire = append(p.inventaire[:itemname[i]], p.inventaire[itemname[i]:]...)
+func (p *personnage) removeInventory(itemToRemove string) {
+	for i, item := range p.inventaire {
+		if item == itemToRemove {
+			p.inventaire = append(p.inventaire[:i], p.inventaire[i+1:]...)
+			return
+		}
 	}
 }
 
