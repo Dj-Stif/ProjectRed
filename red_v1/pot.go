@@ -1,4 +1,4 @@
-package main
+package red
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 )
 
 // Fonction TakePot
-func (p *personnage) takepot() {
+func (p *personnage) Takepot() {
 
 	diffPV := p.PV_actuel + 50 - p.PV_max
 	if p.PV_actuel == p.PV_max {
@@ -30,6 +30,7 @@ func (p *personnage) takepot() {
 		case 1:
 			p.PV_actuel = p.PV_max
 			fmt.Println("Vous avez utilisé une potion, vous avez :", p.PV_actuel, "PV")
+
 			p.removeInventory("Potion")
 
 		case 2:
@@ -39,7 +40,7 @@ func (p *personnage) takepot() {
 }
 
 // Fonction potion de poison
-func (p *personnage) poisonpot() {
+func (p *personnage) Poisonpot() {
 	var durée int = 3
 	var degatspoison int = 10
 

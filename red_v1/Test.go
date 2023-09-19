@@ -1,5 +1,5 @@
 // Execution
-package main
+package red
 
 func main() {
 

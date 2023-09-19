@@ -1,10 +1,12 @@
-package main
+package red
 
 import "fmt"
 
 // Fonction Marchand
+
 func (p *personnage) accessmarchand() {
 	var choixmarchand int
+
 	fmt.Println("Bievenue chez le marchand : ")
 	fmt.Println("1. Potion (0 or)")
 	fmt.Println("2. Potion (3 or)")

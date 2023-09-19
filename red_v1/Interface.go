@@ -1,5 +1,5 @@
 // Fonction affichage menu
-package main
+package red
 
 import "fmt"
 
