@@ -1,71 +1,81 @@
-// Fonction affichage menu
 package red
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-func (p *personnage) afficherdemarrage() {
+func (p *Personnage) Afficherdemarrage() {
 	var choixdemarrage int
+
 	for {
-		fmt.Println("1. Démarrer")
-		fmt.Println("2. Paramètres")
-		fmt.Println("3. Quitter")
+		Defile("Bienvenue dans notre jeu !\nAppuyez sur 1 pour démarrer !\n")
+
 		fmt.Scan(&choixdemarrage)
 
 		switch choixdemarrage {
 		case 1:
-			p.choixpersonnage()
-		case 2:
-			fmt.Println("En cours...")
-		case 3:
-			fmt.Println("Au revoir !")
+			p.CharCreation()
 		default:
-			fmt.Println("Choix invalide, veuillez réessayer")
-
+			Defile("Choix invalide, veuillez réessayer\n")
 		}
 	}
 }
 
-func (p *personnage) choixpersonnage() {
-	var choixperso int
-	fmt.Println("Select your character : ")
-	fmt.Println("1. Elfe")
-	fmt.Scan(&choixperso)
-
-	switch choixperso {
-	case 1:
-		var p1 personnage
-		p1.init("Marin", "elfe", 1, 100, 40, []string{"Potion", "Potion", "Potion"}, 100)
-		p1.affichermenu()
-
-	}
-
-}
-
-func (p *personnage) affichermenu() {
+func (p *Personnage) Affichermenu() {
 
 	var choixmenu int
 	for {
-		fmt.Println("MENU :")
-		fmt.Println("1. Afficher les informations du personnage ")
-		fmt.Println("2. Accèder au contenu de l'inventaire ")
-		fmt.Println("3. Marchand ")
-		fmt.Println("4. Quitter")
-		fmt.Println("Veuillez faire un choix : ")
+		fmt.Println("---------------------------------MENU------------------------------- :")
+		Defilerapide("1. Afficher les informations du personnage\n")
+		Defilerapide("2. Accèder au contenu de l'inventaire\n")
+		Defilerapide("3. Marchand\n")
+		Defilerapide("4. Forgeron\n")
+		Defilerapide("5. Menucombat\n")
+		Defilerapide("6. Qui sont-ils ?\n")
+		Defilerapide("0. Quitter\n")
+		Defilerapide("Veuillez faire un choix :\n")
 		fmt.Scan(&choixmenu)
 
 		switch choixmenu {
 		case 1:
-			p.displayinfo()
+			p.Displayinfo()
 		case 2:
-			p.accessinventory()
+			p.Accessinventory()
 		case 3:
-			p.accessmarchand()
+			p.Accessmarchand()
 		case 4:
+			p.Accesforgeron()
+		case 5:
+			p.Combat(&M1)
+		case 6:
+			p.Qui()
+		case 0:
 			fmt.Println("Au revoir !")
-			p.afficherdemarrage()
+			p.Afficherdemarrage()
 		default:
 			fmt.Println("Choix invalide, veuillez réessayer")
 
 		}
+	}
+}
+func Defile(s string) {
+	for _, letter := range s {
+		fmt.Print(string(letter))
+		time.Sleep(30 * time.Millisecond)
+	}
+}
+
+func Defilerapide(s string) {
+	for _, letter := range s {
+		fmt.Print(string(letter))
+		time.Sleep(5 * time.Millisecond)
+	}
+}
+
+func Defilepara(s string, p *Personnage) {
+	for _, letter := range s {
+		fmt.Print(string(letter))
+		time.Sleep(5 * time.Millisecond)
 	}
 }

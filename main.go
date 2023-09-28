@@ -1,10 +1,10 @@
+// Execution
 package main
 
-import pr "piscine/red"
+import red "red/red_v1"
 
 func main() {
-	var p1 pr.Personnage
-	p1.Init("Humain", "Guerrier")
-	p1.Menu()
-	p1.DisplayInfo()
+	var p red.Personnage
+	red.M1.Initgob("Gobelin d'entrainement", 40, 40, 5, 3)
+	p.Afficherdemarrage()
 }

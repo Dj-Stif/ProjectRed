@@ -4,64 +4,78 @@ import "fmt"
 
 // Fonction Marchand
 
-func (p *personnage) accessmarchand() {
+func (p *Personnage) Accessmarchand() {
 	var choixmarchand int
+	var prix int
+	fmt.Printf("Vous avez %d Or\n", p.argent)
+	Defilerapide("Bievnenue chez le marchand : \n")
+	Defilerapide("1. Potion (0 or)\n")
+	Defilerapide("2. Potion (3 or)\n")
+	Defilerapide("3. Potion de poison (6 or)\n")
+	Defilerapide("4. Livre de sort : Boule de feu (25 or)\n")
+	Defilerapide("5. Fourrure de Loup (4 or)\n")
+	Defilerapide("6. Peau de Troll (7 or)\n")
+	Defilerapide("7. Cuir de Sanglier (3 or)\n")
+	Defilerapide("8. Plume de Corbeau (1 or)\n")
 
-	fmt.Println("Bievenue chez le marchand : ")
-	fmt.Println("1. Potion (0 or)")
-	fmt.Println("2. Potion (3 or)")
-	fmt.Println("3. Potion de poison (6 or)")
-	fmt.Println("4. Livre de sort : Boule de feu (25 or)")
-	fmt.Println("5. Fourrure de Loup (4 or)")
-	fmt.Println("6. Peau de Troll (7 or)")
-	fmt.Println("7. Cuir de sanglier (3 or)")
-	fmt.Println("8. Plume de corbeau (1 or)")
-
-	fmt.Println("0. Quitter le marchand.")
+	Defilerapide("0. Quitter le marchand.\n")
 	fmt.Scan(&choixmarchand)
 
 	switch choixmarchand {
 
 	case 1:
-		p.addinventory("Potion")
-		p.accessmarchand()
+		p.Addinventory("Potion")
+		p.Accessmarchand()
 	case 2:
-		p.addinventory("Potion")
-		p.argent -= 3
-		p.accessmarchand()
+		prix = 3
+		if p.Nomoney(prix) {
+			p.Addinventory("Potion")
+			p.Accessmarchand()
+		}
 
 	case 3:
-		p.addinventory("Potion de poison")
-		p.argent -= 6
-		p.accessmarchand()
+		prix = 6
+		if p.Nomoney(prix) {
+			p.Addinventory("Potion de poison")
+		}
+		p.Accessmarchand()
 
 	case 4:
-		p.addinventory("Livre de sort : Boule de feu")
-		p.argent -= 25
-		p.accessmarchand()
+		prix = 25
+		if p.Nomoney(prix) {
+			p.Addinventory("Livre de sort : Boule de feu [20 mana]")
+		}
+		p.Accessmarchand()
 
 	case 5:
-		p.addinventory("Fourrure de Loup")
-		p.argent -= 4
-		p.accessmarchand()
+		prix = 4
+		if p.Nomoney(prix) {
+			p.Addinventory("Fourrure de Loup")
+		}
+		p.Accessmarchand()
 
 	case 6:
-		p.addinventory("Peau de Troll")
-		p.argent -= 7
-		p.accessmarchand()
+		prix = 7
+		if p.Nomoney(prix) {
+			p.Addinventory("Peau de Troll")
+		}
+		p.Accessmarchand()
 
 	case 7:
-		p.addinventory("Cuir de sanglier")
-		p.argent -= 3
-		p.accessmarchand()
+		prix = 3
+		if p.Nomoney(prix) {
+			p.Addinventory("Cuir de Sanglier")
+		}
+		p.Accessmarchand()
 
 	case 8:
-		p.addinventory("Plume de Corbeau")
-		p.argent -= 1
-		p.accessmarchand()
-
+		prix = 1
+		if p.Nomoney(prix) {
+			p.Addinventory("Plume de Corbeau")
+		}
+		p.Accessmarchand()
 	case 0:
-		p.affichermenu()
+		p.Affichermenu()
 
 	}
 }
